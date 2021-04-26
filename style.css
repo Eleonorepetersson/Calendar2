@@ -1,0 +1,167 @@
+body {
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+    background-color: #FFFCFF;
+    font-family: "Quicksand", sans-serif;
+}
+
+button {
+    width: 75px;
+    cursor: pointer;
+    box-shadow: 0px 0px 2px rgb(70, 70, 70);
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+
+}
+
+#header {
+    font-size: 30px;
+    width: 100%;
+    height: 5rem;
+    background-color: #8a937f;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+    text-transform: uppercase;
+
+}
+
+#header button {
+    background-color: #b6bc9a;
+    margin: 10px;
+}
+
+#container {
+    width: 770px;
+    padding: 4rem;
+    background-image: url(images/pexels-element-digital-1470168.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    background-color: #a5a5a5;
+    box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    opacity: 90%;
+}
+
+#weekdays {
+    width: 100%;
+    display: flex;
+    color: #000000;
+    font-weight: bold;
+    text-align: center;
+}
+
+#weekdays div {
+    width: 100px;
+    padding: 10px;
+}
+
+#calendar {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.day {
+    width: 100px;
+    padding: 10px;
+    height: 100px;
+    cursor: pointer;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    margin: 5px;
+    box-shadow: 0px 0px 3px #444444;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    border: none;
+}
+
+.day:hover {
+    background-color: #b6bc9a;
+}
+
+.day+#currentDay {
+    background-color: #8a937f;
+}
+
+.event {
+    font-size: 10px;
+    padding: 3px;
+    background-color: #cccfc7;
+    color: white;
+    border-radius: 5px;
+    max-height: 55px;
+    overflow: hidden;
+}
+
+.padding {
+    cursor: default !important;
+    background-color: #fffcff0c !important;
+    box-shadow: none !important;
+}
+
+#newEventModal,
+#deleteEventModal {
+    display: none;
+    z-index: 20;
+    padding: 20px;
+    background-color: #cccfc7;
+    box-shadow: 0px 0px 3px black;
+    border-radius: 10px;
+    width: 350px;
+    top: 70px;
+    left: calc(50% - 175px);
+    position: absolute;
+}
+
+#eventTitleInput {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 25px;
+    border-radius: 3px;
+    outline: none;
+    border: none;
+    box-shadow: 0px 0px 3px rgb(109, 108, 108);
+}
+
+#eventTitleInput.error {
+    border: 2px solid red;
+}
+
+#cancelButton,
+#deleteButton {
+    background-color: #e2e3e0;
+    border: none;
+}
+
+#saveButton,
+#closeButton {
+    background-color: #e2e3e0;
+    border: none;
+}
+
+#eventText {
+    font-size: 20px;
+}
+
+#modalBackDrop {
+    display: none;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+}
