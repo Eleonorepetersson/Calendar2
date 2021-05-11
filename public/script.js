@@ -1,13 +1,37 @@
 let nav = 0;
 let clicked = null;
-let events = localStorage.getItem('events') ? JSON.parse(localStorage.getItem('events')) : [];
+// let events = localStorage.getItem('events') ? JSON.parse(localStorage.getItem('events')) : [];
+let events = [];
+const apiUrl = "http://localhost:5000/events";
+fetch(apiUrl)
+  .then(response => response.json())
+  .then(objs => {
+    // Do stuff with data here
+    objs.forEach(obj => {
+      events.push(obj);
+      console.log(obj);
+    });
+    load(); 
+    console.log(objs);
+    // kalla funktioner här som skapar DOM-element av events och sånt
+  })
+  
 
+
+
+
+
+  .catch(err => console.log(err));
 const calendar = document.getElementById('calendar');
 const newEventModal = document.getElementById('newEventModal');
 const deleteEventModal = document.getElementById('deleteEventModal');
 const backDrop = document.getElementById('modalBackDrop');
 const eventTitleInput = document.getElementById('eventTitleInput');
 const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+
+
+console.log("events", events);
+
 
 function openModal(date) {
   clicked = date;
@@ -56,10 +80,11 @@ function load() {
     daySquare.classList.add('day');
 
     const dayString = `${month + 1}/${i - paddingDays}/${year}`;
-
+    
     if (i > paddingDays) {
       daySquare.innerText = i - paddingDays;
       const eventForDay = events.find(e => e.date === dayString);
+      console.log("eventForDay", eventForDay, dayString)
 
       if (i - paddingDays === day && nav === 0) {
         daySquare.id = 'currentDay';
@@ -68,7 +93,7 @@ function load() {
       if (eventForDay) {
         const eventDiv = document.createElement('div');
         eventDiv.classList.add('event');
-        eventDiv.innerText = eventForDay.title;
+        eventDiv.innerText = eventForDay.name;
         daySquare.appendChild(eventDiv);
       }
 
@@ -90,17 +115,19 @@ function closeModal() {
   clicked = null;
   load();
 }
-
+// här är funktionerna som gör api calls. kommunicera med servern
 function saveEvent() {
   if (eventTitleInput.value) {
     eventTitleInput.classList.remove('error');
 
     events.push({
       date: clicked,
-      title: eventTitleInput.value,
+      name: eventTitleInput.value,
+      id: "ab123"
     });
 
-    localStorage.setItem('events', JSON.stringify(events));
+    // localStorage.setItem('events', JSON.stringify(events));
+    saveListToServer();
     closeModal();
   } else {
     eventTitleInput.classList.add('error');
@@ -110,7 +137,21 @@ function saveEvent() {
 function deleteEvent() {
   events = events.filter(e => e.date !== clicked);
   localStorage.setItem('events', JSON.stringify(events));
+  saveListToServer();
   closeModal();
+}
+
+function saveListToServer() {
+  fetch(apiUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+
+    },
+    body: JSON.stringify(events)
+  })
+  .then(response => console.log(response))
+  .catch(err => console.log(err));
 }
 
 function initButtons() {
@@ -131,4 +172,4 @@ function initButtons() {
 }
 
 initButtons();
-load();
+// load();

@@ -2,7 +2,7 @@ body {
     display: flex;
     margin-top: 50px;
     justify-content: center;
-    background-color: #FFFCFF;
+    background-color: #DBD8F0;
     font-family: "Quicksand", sans-serif;
 }
 
@@ -21,7 +21,7 @@ button {
     font-size: 30px;
     width: 100%;
     height: 5rem;
-    background-color: #8a937f;
+    background-color: #E9eef2;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -29,22 +29,23 @@ button {
     text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
   border-radius: 10px;
     text-transform: uppercase;
-
+    box-shadow: 0px 0px 2px rgb(70, 70, 70);
 }
 
 #header button {
-    background-color: #b6bc9a;
+    background-color: #ffffff;
     margin: 10px;
+    border: none;
 }
 
 #container {
     width: 770px;
     padding: 4rem;
-    background-image: url(images/pexels-element-digital-1470168.jpg);
+    background-image: url(images/pexels-karolina-grabowska-4705933.jpg);
     background-position: center;
     background-size: cover;
     position: relative;
-    background-color: #a5a5a5;
+    background-color: #E9eef2;
     box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.4);
     border-radius: 20px;
     opacity: 90%;
@@ -87,17 +88,17 @@ button {
 }
 
 .day:hover {
-    background-color: #b6bc9a;
+    background-color: #E9eef2;
 }
 
 .day+#currentDay {
-    background-color: #8a937f;
+    background-color: #d9dee4;
 }
 
 .event {
     font-size: 10px;
     padding: 3px;
-    background-color: #cccfc7;
+    background-color: #DBD8F0;
     color: white;
     border-radius: 5px;
     max-height: 55px;
@@ -115,7 +116,7 @@ button {
     display: none;
     z-index: 20;
     padding: 20px;
-    background-color: #cccfc7;
+    background-color: #DBD8F0;
     box-shadow: 0px 0px 3px black;
     border-radius: 10px;
     width: 350px;
@@ -141,13 +142,13 @@ button {
 
 #cancelButton,
 #deleteButton {
-    background-color: #e2e3e0;
+    background-color: #E9eef2;
     border: none;
 }
 
 #saveButton,
 #closeButton {
-    background-color: #e2e3e0;
+    background-color: #E9eef2;
     border: none;
 }
 
